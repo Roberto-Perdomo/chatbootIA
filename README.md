@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 src/
 │
@@ -15,3 +16,6 @@ src/
 │
 ├── App.jsx
 └── main.jsx
+=======
+# chatbotIA
+>>>>>>> 0ae59c053c153d7ce6b977c6b0bce2da85e83210
