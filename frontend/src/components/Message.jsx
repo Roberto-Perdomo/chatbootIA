@@ -1,7 +1,9 @@
-function Message({ text, sender }) {
+function Message({ sender, text }) {
   return (
     <div className={`message ${sender}`}>
-      {text}
+      <div className="bubble">
+        {text}
+      </div>
     </div>
   );
 }

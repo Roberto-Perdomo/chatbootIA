@@ -4,7 +4,7 @@ function ChatWindow({ messages }) {
   return (
     <div className="chat-window">
       {messages.map((msg, index) => (
-        <Message key={index} text={msg.text} sender={msg.sender} />
+        <Message key={index} sender={msg.sender} text={msg.text} />
       ))}
     </div>
   );
