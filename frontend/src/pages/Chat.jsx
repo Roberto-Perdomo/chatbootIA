@@ -1,24 +1,45 @@
+
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import ChatWindow from "../components/ChatWindow";
 import InputBar from "../components/InputBar";
 
-
 function Chat() {
   const [messages, setMessages] = useState([]);
 
-  const sendMessage = (text) => {
-    const newMessage = { text, sender: "user" };
+  const sendMessage = async (text) => {
+    if (!text.trim()) return;
 
-    setMessages((prev) => [...prev, newMessage]);
+    // 1️⃣ Agregamos mensaje del usuario
+    const userMessage = { sender: "user", text };
+    setMessages((prev) => [...prev, userMessage]);
 
-    // Simulación de respuesta automática
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { text: "Respuesta automática 🤖", sender: "bot" },
-      ]);
-    }, 1000);
+    try {
+      const response = await fetch(
+        "https://chatbot-ia-backend-o5bu.onrender.com/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: text, // ⚠️ confirmar en /docs si se llama "message"
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      // 2️⃣ Agregamos respuesta del bot
+      const botMessage = {
+        sender: "bot",
+        text: data.response, // ⚠️ confirmar cómo viene la respuesta
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (

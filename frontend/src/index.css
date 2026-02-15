@@ -1,13 +1,16 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background: #343541;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .chat-container {
   display: flex;
   height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 250px;
   background: #202123;
@@ -23,57 +26,94 @@ body {
   border: none;
   color: white;
   cursor: pointer;
+  border-radius: 6px;
 }
 
+/* ZONA PRINCIPAL */
 .chat-main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #343541;
 }
 
+/* VENTANA DE MENSAJES */
 .chat-window {
   flex: 1;
-  padding: 20px;
+  padding: 30px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* MENSAJE CONTENEDOR */
 .message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  max-width: 60%;
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
+/* BURBUJA */
+.message-content {
+  padding: 14px 18px;
+  border-radius: 16px;
+  max-width: 65%;
+  word-wrap: break-word;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* USUARIO (derecha) */
 .user {
+  justify-content: flex-end;
+  color: rgb(220, 213, 213);
+}
+
+.user .message-content {
   background: #10a37f;
-  align-self: flex-end;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+/* BOT (izquierda) */
+.bot {
+  justify-content: flex-start;
   color: white;
 }
 
-.bot {
+.bot .message-content {
   background: #444654;
   color: white;
+  border-bottom-left-radius: 5px;
 }
 
+/* INPUT */
 .input-bar {
   display: flex;
   padding: 15px;
   background: #40414f;
+  border-top: 1px solid #555;
 }
 
 .input-bar input {
   flex: 1;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
+  outline: none;
+  font-size: 14px;
 }
 
 .input-bar button {
   margin-left: 10px;
-  padding: 10px 15px;
+  padding: 12px 18px;
   background: #10a37f;
   border: none;
   color: white;
   cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.input-bar button:hover {
+  background: #0d8c6c;
 }

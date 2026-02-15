@@ -3,25 +3,20 @@ import { useState } from "react";
 function InputBar({ onSend }) {
   const [input, setInput] = useState("");
 
-  const handleSubmit = () => {
-    if (!input.trim()) return;
-
+  const handleSend = () => {
     onSend(input);
     setInput("");
   };
 
   return (
-    <div style={{ padding: "15px", background: "#40414f" }}>
+    <div className="input-bar">
       <input
         type="text"
-        placeholder="Escribe tu mensaje..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        style={{ width: "80%", padding: "10px" }}
+        placeholder="Escribe tu mensaje..."
       />
-      <button onClick={handleSubmit} style={{ padding: "10px" }}>
-        Enviar
-      </button>
+      <button onClick={handleSend}>Enviar</button>
     </div>
   );
 }
